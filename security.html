@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security & Trust — super_vibe</title>
+<meta name="description" content="How super_vibe protects your data — encryption, access controls, and compliance.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2315171C'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='34' font-weight='700' fill='%23fff' text-anchor='middle'%3Es%3C/text%3E%3Ccircle cx='47' cy='17' r='5' fill='%23FF7A45'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#FAFAF8;--bg-alt:#F1EFE8;--ink:#15171C;--ink-soft:#3A3D45;--muted:#6B6E76;--line:#E6E3DA;
+    --accent:#2E3FE0;--accent-soft:#EBEDFB;--warm:#FF7A45;--ok:#1E9E5A;--r-m:20px;--r-l:32px;--ease:cubic-bezier(.16,1,.3,1);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;letter-spacing:-0.01em;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 32px;}
+  .section-pad{padding:80px 0;}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:600;font-size:15px;transition:.3s var(--ease);}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-ghost{border:1.5px solid var(--line);}
+  header{padding:22px 0;border-bottom:1px solid var(--line);}
+  nav{display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto;padding:0 32px;}
+  .logo{font-family:'Fraunces',serif;font-weight:700;font-size:21px;display:flex;align-items:center;gap:9px;}
+  .logo-dot{width:9px;height:9px;border-radius:50%;background:var(--warm);}
+  .nav-links{display:flex;gap:30px;list-style:none;}
+  .nav-links a{font-size:14.5px;font-weight:500;color:var(--ink-soft);}
+  .nav-cta{display:flex;gap:14px;}
+  .hero{padding:70px 0 30px;text-align:center;}
+  .hero h1{font-size:clamp(32px,5vw,48px);margin-bottom:14px;}
+  .hero p{color:var(--muted);font-size:17px;max-width:540px;margin:0 auto 30px;}
+  .badges-row{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+  .badge{border:1.5px solid var(--line);border-radius:999px;padding:9px 18px;font-size:13px;font-weight:600;color:var(--ink-soft);display:flex;align-items:center;gap:7px;background:#fff;}
+  .badge .dot{width:7px;height:7px;border-radius:50%;background:var(--ok);}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .sec-card{background:#fff;border:1.5px solid var(--line);border-radius:var(--r-m);padding:30px;transition:.3s var(--ease);}
+  .sec-card:hover{transform:translateY(-5px);box-shadow:0 20px 34px -18px rgba(20,20,30,.2);}
+  .sec-card .ic{width:44px;height:44px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:16px;}
+  .sec-card h3{font-size:17px;margin-bottom:8px;}
+  .sec-card p{color:var(--muted);font-size:14px;}
+  footer{background:var(--ink);color:#fff;padding:50px 0 26px;text-align:center;margin-top:40px;}
+  footer p{color:#8E90A0;font-size:13px;}
+  footer .logo{color:#fff;justify-content:center;margin-bottom:14px;}
+  @media(max-width:860px){.grid3{grid-template-columns:1fr 1fr;}.nav-links{display:none;}}
+  @media(max-width:560px){.grid3{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<header><nav>
+  <a href="index.html" class="logo"><span class="logo-dot"></span>super_vibe</a>
+  <ul class="nav-links"><li><a href="features.html">Features</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="blog.html">Blog</a></li><li><a href="about.html">About</a></li></ul>
+  <div class="nav-cta"><a href="login.html" class="btn btn-ghost" style="padding:10px 18px;">Log in</a><a href="login.html?mode=signup" class="btn btn-primary" style="padding:10px 18px;">Start for free</a></div>
+</nav></header>
+
+<section class="hero wrap">
+  <h1>Security is not an afterthought</h1>
+  <p>Your boards, briefs and client data are protected the same way we'd want our own studio's data handled.</p>
+  <div class="badges-row">
+    <span class="badge"><span class="dot"></span>SOC 2 Type II (in progress)</span>
+    <span class="badge"><span class="dot"></span>GDPR ready</span>
+    <span class="badge"><span class="dot"></span>256-bit encryption</span>
+    <span class="badge"><span class="dot"></span>99.9% uptime target</span>
+  </div>
+</section>
+
+<section class="section-pad wrap">
+  <div class="grid3">
+    <div class="sec-card"><div class="ic">🔒</div><h3>Encryption</h3><p>Data is encrypted in transit (TLS 1.2+) and at rest. Backups are encrypted separately from primary storage.</p></div>
+    <div class="sec-card"><div class="ic">🔑</div><h3>Access control</h3><p>Role-based permissions per workspace, with granular guest access for clients and contractors.</p></div>
+    <div class="sec-card"><div class="ic">🛡️</div><h3>Infrastructure</h3><p>Hosted on redundant cloud infrastructure with automated failover and daily encrypted backups.</p></div>
+    <div class="sec-card"><div class="ic">📋</div><h3>Compliance</h3><p>Working toward SOC 2 Type II certification. GDPR-aligned data handling for teams in the EU.</p></div>
+    <div class="sec-card"><div class="ic">👀</div><h3>Monitoring</h3><p>24/7 automated monitoring with alerting on unusual account activity and access patterns.</p></div>
+    <div class="sec-card"><div class="ic">🧾</div><h3>Data ownership</h3><p>You always own your data. Full export available at any time, in open formats like CSV and JSON.</p></div>
+  </div>
+</section>
+
+<section class="section-pad wrap" style="padding-top:0;">
+  <div style="background:var(--bg-alt);border-radius:var(--r-l);padding:44px;text-align:center;">
+    <h2 style="font-size:24px;margin-bottom:10px;">Have a security question?</h2>
+    <p style="color:var(--muted);margin-bottom:20px;">Our team can share our security whitepaper and answer questions from your IT or legal team.</p>
+    <a href="contact.html" class="btn btn-primary">Contact security team</a>
+  </div>
+</section>
+
+<footer><div class="wrap"><a href="index.html" class="logo"><span class="logo-dot"></span>super_vibe</a><p>© 2026 super_vibe. All rights reserved.</p></div></footer>
+</body>
+</html>

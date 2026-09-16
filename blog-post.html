@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why most project tools make busy work worse — super_vibe blog</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2315171C'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='34' font-weight='700' fill='%23fff' text-anchor='middle'%3Es%3C/text%3E%3Ccircle cx='47' cy='17' r='5' fill='%23FF7A45'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#FAFAF8;--bg-alt:#F1EFE8;--ink:#15171C;--ink-soft:#3A3D45;--muted:#6B6E76;--line:#E6E3DA;
+    --accent:#2E3FE0;--accent-soft:#EBEDFB;--warm:#FF7A45;--r-m:20px;--r-l:32px;--ease:cubic-bezier(.16,1,.3,1);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);line-height:1.7;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;letter-spacing:-0.01em;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px;}
+  .wide{max-width:1180px;margin:0 auto;padding:0 32px;}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:600;font-size:15px;transition:.3s var(--ease);}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-ghost{border:1.5px solid var(--line);}
+
+  header{padding:22px 0;border-bottom:1px solid var(--line);}
+  nav{display:flex;align-items:center;justify-content:space-between;max-width:1180px;margin:0 auto;padding:0 32px;}
+  .logo{font-family:'Fraunces',serif;font-weight:700;font-size:20px;display:flex;align-items:center;gap:9px;}
+  .logo-dot{width:9px;height:9px;border-radius:50%;background:var(--warm);}
+  .back-link{font-size:14px;color:var(--muted);}
+  .back-link:hover{color:var(--ink);}
+
+  .post-head{padding:60px 0 30px;}
+  .tag{display:inline-block;background:var(--accent-soft);color:#1B27A8;padding:5px 12px;border-radius:999px;font-size:12px;font-weight:600;margin-bottom:20px;}
+  .post-head h1{font-size:clamp(30px,5vw,44px);line-height:1.15;margin-bottom:20px;}
+  .byline{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:14px;}
+  .byline img{width:36px;height:36px;border-radius:50%;object-fit:cover;}
+
+  .cover{margin:40px 0 50px;}
+  .cover img{width:100%;height:420px;object-fit:cover;border-radius:var(--r-l);}
+
+  article p{color:var(--ink-soft);font-size:17px;margin-bottom:22px;}
+  article h2{font-size:24px;margin:44px 0 16px;}
+  .pull-quote{font-family:'Fraunces',serif;font-style:italic;font-size:24px;line-height:1.5;color:var(--ink);
+    border-left:3px solid var(--warm);padding-left:24px;margin:36px 0;}
+
+  .post-cta{background:var(--bg-alt);border-radius:var(--r-l);padding:40px;text-align:center;margin:60px 0;}
+  .post-cta h3{font-size:22px;margin-bottom:10px;}
+  .post-cta p{color:var(--muted);margin-bottom:22px;}
+
+  .related{padding:20px 0 80px;}
+  .related h3{font-size:22px;margin-bottom:26px;}
+  .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .related-card img{height:150px;object-fit:cover;border-radius:var(--r-m);margin-bottom:12px;}
+  .related-card b{font-size:15px;display:block;}
+
+  footer{background:var(--ink);color:#fff;padding:50px 0 26px;text-align:center;}
+  footer p{color:#8E90A0;font-size:13px;}
+  footer .logo{color:#fff;justify-content:center;margin-bottom:14px;}
+
+  @media(max-width:700px){.related-grid{grid-template-columns:1fr;}.cover img{height:240px;}}
+</style>
+</head>
+<body>
+<header>
+  <nav>
+    <a href="index.html" class="logo"><span class="logo-dot"></span>super_vibe</a>
+    <a href="blog.html" class="back-link">← Back to blog</a>
+  </nav>
+</header>
+
+<div class="wrap">
+  <div class="post-head">
+    <span class="tag">Process</span>
+    <h1>Why most project tools make busy work worse</h1>
+    <div class="byline">
+      <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=100&q=80" alt="Author portrait">
+      <span>Alina Rivers · September 3, 2026 · 8 min read</span>
+    </div>
+  </div>
+
+  <div class="cover">
+    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80" alt="Team planning session">
+  </div>
+
+  <article>
+    <p>Every project tool promises to make a team more organized. In practice, a lot of them just move the busy work somewhere else. Instead of chasing updates in email, you're now updating three different boards to keep everyone in the loop. The tool didn't remove the work — it relocated it.</p>
+
+    <p>We noticed this pattern first in our own studio, long before super_vibe existed as a product. We'd adopt a new tracker, feel organized for two weeks, and then quietly slide back into spreadsheets and long email threads once the novelty wore off. The tool wasn't the problem. The amount of manual upkeep it demanded was.</p>
+
+    <h2>The real cost is context switching</h2>
+    <p>Every time someone has to leave the actual work to go update a status, write a summary, or repeat feedback in a second place, that's a small tax on their attention. It doesn't feel like much in isolation, but across a ten-person team running five projects, it adds up to hours of pure overhead every week.</p>
+
+    <p class="pull-quote">The goal isn't a tool that tracks more things. It's a tool that needs less tracking to begin with.</p>
+
+    <h2>What we changed</h2>
+    <p>When we started building super_vibe, we set one rule for every new feature: if it adds a manual step for someone on the team, it has to remove at least two elsewhere. That's why comments live directly on the work instead of in a separate channel, and why workload numbers update automatically instead of requiring a weekly check-in to fill out a spreadsheet.</p>
+
+    <p>It also shaped what we chose not to build. We skipped a lot of granular permission settings and custom status workflows that look good in a sales demo but mostly just give teams more configuration to maintain.</p>
+
+    <h2>Fewer places to look</h2>
+    <p>The teams who get the most out of this approach are usually the ones who were previously spread across four or five separate apps — a tracker, a chat app, a shared drive, and a spreadsheet for reporting. Consolidating that into one board doesn't just save clicks. It removes the mental overhead of remembering where a given piece of information lives.</p>
+
+    <p>That's really the whole idea behind super_vibe: not one more tool to check, but one less thing to think about.</p>
+  </article>
+
+  <div class="post-cta">
+    <h3>See it with your own projects</h3>
+    <p>Start free and set up your first board in a few minutes.</p>
+    <a href="login.html?mode=signup" class="btn btn-primary">Start for free</a>
+  </div>
+</div>
+
+<div class="wide related">
+  <h3>Related reading</h3>
+  <div class="related-grid">
+    <a href="blog-post.html" class="related-card">
+      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=400&q=80" alt="Desk workspace">
+      <b>How we run sprints without a status meeting</b>
+    </a>
+    <a href="blog-post.html" class="related-card">
+      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" alt="Team discussion">
+      <b>Feedback that doesn't disappear into Slack</b>
+    </a>
+    <a href="blog-post.html" class="related-card">
+      <img src="https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?auto=format&fit=crop&w=400&q=80" alt="Automation on laptop">
+      <b>Five automations every small studio should set up</b>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <a href="index.html" class="logo"><span class="logo-dot"></span>super_vibe</a>
+    <p>© 2026 super_vibe. All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>

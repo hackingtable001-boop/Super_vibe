@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — super_vibe</title>
+<meta name="description" content="Get in touch with the super_vibe team — sales, support or general questions.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2315171C'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='34' font-weight='700' fill='%23fff' text-anchor='middle'%3Es%3C/text%3E%3Ccircle cx='47' cy='17' r='5' fill='%23FF7A45'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#FAFAF8;--bg-alt:#F1EFE8;--ink:#15171C;--ink-soft:#3A3D45;--muted:#6B6E76;--line:#E6E3DA;
+    --accent:#2E3FE0;--accent-deep:#1B27A8;--accent-soft:#EBEDFB;--warm:#FF7A45;--ok:#1E9E5A;--r-m:20px;--r-l:32px;--ease:cubic-bezier(.16,1,.3,1);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;letter-spacing:-0.01em;}
+  button{font-family:'Inter',sans-serif;cursor:pointer;border:none;background:none;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 32px;}
+  .section-pad{padding:70px 0 100px;}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:600;font-size:15px;transition:.3s var(--ease);}
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 10px 24px -8px rgba(46,63,224,.5);}
+  .btn-primary:hover{transform:translateY(-3px);}
+  .btn-ghost{border:1.5px solid var(--line);}
+  .btn-ghost:hover{border-color:var(--ink);}
+
+  header{padding:22px 0;border-bottom:1px solid var(--line);}
+  nav{display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-family:'Fraunces',serif;font-weight:700;font-size:21px;display:flex;align-items:center;gap:9px;}
+  .logo-dot{width:9px;height:9px;border-radius:50%;background:var(--warm);}
+  .nav-links{display:flex;gap:30px;list-style:none;}
+  .nav-links a{font-size:14.5px;font-weight:500;color:var(--ink-soft);}
+  .nav-cta{display:flex;gap:14px;}
+
+  .hero{padding:70px 0 40px;text-align:center;}
+  .hero h1{font-size:clamp(32px,5vw,48px);margin-bottom:14px;}
+  .hero p{color:var(--muted);font-size:17px;max-width:520px;margin:0 auto;}
+
+  .contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:50px;align-items:start;}
+  .info-cards{display:flex;flex-direction:column;gap:16px;margin-bottom:26px;}
+  .info-card{background:#fff;border:1.5px solid var(--line);border-radius:var(--r-m);padding:22px 24px;display:flex;gap:16px;align-items:flex-start;}
+  .info-ic{width:42px;height:42px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:18px;flex:0 0 auto;}
+  .info-card b{display:block;font-size:15px;margin-bottom:3px;}
+  .info-card span{font-size:13.5px;color:var(--muted);}
+  .map-img{border-radius:var(--r-l);overflow:hidden;height:220px;}
+  .map-img img{width:100%;height:100%;object-fit:cover;}
+
+  .form-card{background:#fff;border:1.5px solid var(--line);border-radius:var(--r-l);padding:44px;}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .field{margin-bottom:20px;}
+  .field label{display:block;font-size:13px;font-weight:600;color:var(--ink-soft);margin-bottom:8px;}
+  .field input, .field select, .field textarea{
+    width:100%;padding:13px 15px;border-radius:12px;border:1.5px solid var(--line);
+    font-size:15px;font-family:'Inter',sans-serif;color:var(--ink);transition:.3s var(--ease);
+  }
+  .field textarea{resize:vertical;min-height:120px;}
+  .field input:focus, .field select:focus, .field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft);}
+  .err{color:#D93025;font-size:12.5px;margin-top:6px;display:none;}
+  .field.invalid input, .field.invalid textarea{border-color:#D93025;}
+  .field.invalid .err{display:block;}
+  .submit-btn{width:100%;padding:15px;border-radius:999px;background:var(--accent);color:#fff;font-weight:600;font-size:15.5px;transition:.3s var(--ease);}
+  .submit-btn:hover{transform:translateY(-3px);background:var(--accent-deep);}
+  .success-box{display:none;text-align:center;padding:30px 0;}
+  .success-box.show{display:block;}
+  .success-box .check{width:60px;height:60px;border-radius:50%;background:#E6F6EC;color:var(--ok);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:26px;}
+  .success-box h3{font-size:20px;margin-bottom:8px;}
+  .success-box p{color:var(--muted);font-size:14.5px;}
+
+  footer{background:var(--ink);color:#fff;padding:60px 0 30px;margin-top:60px;text-align:center;}
+  footer p{color:#8E90A0;font-size:13px;}
+  footer .logo{color:#fff;justify-content:center;margin-bottom:16px;}
+
+  @media(max-width:860px){.contact-grid{grid-template-columns:1fr;}.row2{grid-template-columns:1fr;}.nav-links{display:none;}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="index.html" class="logo"><span class="logo-dot"></span>super_vibe</a>
+      <ul class="nav-links">
+        <li><a href="features.html">Features</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="login.html" class="btn btn-ghost" style="padding:10px 18px;">Log in</a>
+        <a href="login.html?mode=signup" class="btn btn-primary" style="padding:10px 18px;">Start for free</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero wrap">
+  <h1>Let's talk</h1>
+  <p>Questions about plans, onboarding, or anything else — we usually reply within a few hours.</p>
+</section>
+
+<section class="section-pad wrap">
+  <div class="contact-grid">
+    <div>
+      <div class="info-cards">
+        <div class="info-card"><div class="info-ic">✉</div><div><b>Email us</b><span>hello@supervibe.app</span></div></div>
+        <div class="info-card"><div class="info-ic">💬</div><div><b>Live chat</b><span>Bottom-right of any page, weekdays 9am–6pm</span></div></div>
+        <div class="info-card"><div class="info-ic">📍</div><div><b>Office</b><span>Remote-first, with a small hub in Tashkent, Uzbekistan</span></div></div>
+      </div>
+      <div class="map-img">
+        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=700&q=80" alt="Office workspace">
+      </div>
+    </div>
+
+    <div class="form-card">
+      <form id="contactForm" novalidate>
+        <div class="row2">
+          <div class="field" id="fName">
+            <label>Full name</label>
+            <input type="text" placeholder="Jamie Parker" required>
+            <span class="err">Please enter your name.</span>
+          </div>
+          <div class="field" id="fEmail">
+            <label>Email</label>
+            <input type="email" placeholder="you@company.com" required>
+            <span class="err">Please enter a valid email address.</span>
+          </div>
+        </div>
+        <div class="field" id="fCompany">
+          <label>Company (optional)</label>
+          <input type="text" placeholder="Studio Flux">
+        </div>
+        <div class="field" id="fTopic">
+          <label>What's this about?</label>
+          <select>
+            <option>General question</option>
+            <option>Sales</option>
+            <option>Support</option>
+            <option>Partnerships</option>
+          </select>
+        </div>
+        <div class="field" id="fMessage">
+          <label>Message</label>
+          <textarea placeholder="How can we help?" required minlength="10"></textarea>
+          <span class="err">Please write at least a short message.</span>
+        </div>
+        <button class="submit-btn" type="submit">Send message</button>
+      </form>
+      <div class="success-box" id="successBox">
+        <div class="check">✓</div>
+        <h3>Message sent</h3>
+        <p>Thanks for reaching out — we'll get back to you within one business day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a href="index.html" class="logo"><span class="logo-dot"></span>super_vibe</a>
+    <p>© 2026 super_vibe. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  const form = document.getElementById('contactForm');
+  const successBox = document.getElementById('successBox');
+  function validateField(fieldEl){
+    const input = fieldEl.querySelector('input, textarea');
+    if(!input) return true;
+    const ok = input.checkValidity();
+    fieldEl.classList.toggle('invalid', !ok);
+    return ok;
+  }
+  form.addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const fields = ['fName','fEmail','fMessage'].map(id=>document.getElementById(id));
+    const allOk = fields.map(validateField).every(Boolean);
+    if(allOk){
+      form.style.display = 'none';
+      successBox.classList.add('show');
+    }
+  });
+</script>
+</body>
+</html>

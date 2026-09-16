@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Features — super_vibe</title>
+<meta name="description" content="Every super_vibe feature in one place: planning, collaboration, analytics, automation — and how it compares to a typical project tool.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2315171C'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='34' font-weight='700' fill='%23fff' text-anchor='middle'%3Es%3C/text%3E%3Ccircle cx='47' cy='17' r='5' fill='%23FF7A45'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#FAFAF8;--bg-alt:#F1EFE8;--ink:#15171C;--ink-soft:#3A3D45;--muted:#6B6E76;--line:#E6E3DA;
+    --accent:#2E3FE0;--accent-deep:#1B27A8;--accent-soft:#EBEDFB;--warm:#FF7A45;--r-m:20px;--r-l:32px;--ease:cubic-bezier(.16,1,.3,1);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;letter-spacing:-0.01em;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  .section-pad{padding:100px 0;}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:600;font-size:15px;transition:.3s var(--ease);}
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 10px 24px -8px rgba(46,63,224,.5);}
+  .btn-primary:hover{transform:translateY(-3px);}
+  .btn-ghost{border:1.5px solid var(--line);}
+  .btn-ghost:hover{border-color:var(--ink);transform:translateY(-3px);}
+
+  header{padding:22px 0;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(250,250,248,.9);backdrop-filter:blur(10px);z-index:50;}
+  nav{display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-family:'Fraunces',serif;font-weight:700;font-size:21px;display:flex;align-items:center;gap:9px;}
+  .logo-dot{width:9px;height:9px;border-radius:50%;background:var(--warm);}
+  .nav-links{display:flex;gap:30px;list-style:none;}
+  .nav-links a{font-size:14.5px;font-weight:500;color:var(--ink-soft);}
+  .nav-links a:hover{color:var(--ink);}
+  .nav-cta{display:flex;gap:14px;}
+
+  .hero{padding:80px 0 20px;text-align:center;}
+  .hero h1{font-size:clamp(34px,5vw,54px);max-width:760px;margin:0 auto 20px;}
+  .hero p{color:var(--muted);font-size:18px;max-width:560px;margin:0 auto;}
+
+  .feat-row{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center;}
+  .feat-row+.feat-row{margin-top:110px;}
+  .feat-row.rev{direction:rtl;}
+  .feat-row.rev>*{direction:ltr;}
+  .feat-icon{width:52px;height:52px;border-radius:14px;background:var(--accent-soft);color:var(--accent);
+    display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:22px;}
+  .feat-row h2{font-size:30px;margin-bottom:16px;}
+  .feat-row p{color:var(--muted);font-size:16px;margin-bottom:22px;max-width:440px;}
+  .feat-list{list-style:none;display:flex;flex-direction:column;gap:11px;}
+  .feat-list li{font-size:15px;color:var(--ink-soft);display:flex;gap:9px;}
+  .feat-list li::before{content:'✓';color:var(--accent);font-weight:700;}
+  .feat-media{border-radius:var(--r-l);overflow:hidden;box-shadow:0 26px 54px -22px rgba(20,20,30,.28);}
+  .feat-media img{width:100%;height:400px;object-fit:cover;}
+
+  /* playground */
+  .playground{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .pg-col-head{font-size:13.5px;font-weight:700;color:var(--ink-soft);margin-bottom:12px;display:flex;justify-content:space-between;}
+  .pg-col-head span{background:var(--bg-alt);border-radius:999px;padding:1px 9px;font-size:12px;color:var(--muted);}
+  .pg-drop{background:var(--bg-alt);border-radius:var(--r-m);padding:12px;min-height:160px;transition:background .25s;}
+  .pg-drop.drag-over{background:var(--accent-soft);}
+  .pg-card{background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:14px;margin-bottom:10px;font-size:13.5px;cursor:grab;transition:transform .2s, box-shadow .2s;}
+  .pg-card:active{cursor:grabbing;}
+  .pg-card.dragging{opacity:.4;}
+  .pg-card span{display:block;font-size:11.5px;color:var(--muted);margin-top:6px;}
+  @media(max-width:860px){.playground{grid-template-columns:1fr;}}
+
+  /* comparison table */
+  .compare-wrap{overflow-x:auto;}
+  table.compare{width:100%;border-collapse:collapse;min-width:640px;background:#fff;border-radius:var(--r-l);overflow:hidden;box-shadow:0 20px 50px -30px rgba(20,20,30,.2);}
+  table.compare th, table.compare td{padding:18px 22px;text-align:left;border-bottom:1px solid var(--line);font-size:14.5px;}
+  table.compare th{background:var(--bg-alt);font-family:'Fraunces',serif;font-size:16px;font-weight:600;}
+  table.compare td:not(:first-child), table.compare th:not(:first-child){text-align:center;}
+  table.compare .col-us{background:var(--accent-soft);}
+  table.compare tr:last-child td{border-bottom:none;}
+  .yes{color:#1E9E5A;font-weight:700;}
+  .no{color:#C7C4B8;}
+
+  .cta-banner{background:linear-gradient(135deg,var(--accent-soft),#fff 60%);border-radius:var(--r-l);padding:70px 50px;text-align:center;}
+  .cta-banner h2{font-size:clamp(28px,4vw,40px);margin-bottom:14px;}
+  .cta-banner p{color:var(--muted);margin-bottom:26px;}
+
+  footer{background:var(--ink);color:#fff;padding:60px 0 30px;margin-top:60px;text-align:center;}
+  footer p{color:#8E90A0;font-size:13px;}
+  footer .logo{color:#fff;justify-content:center;margin-bottom:16px;}
+
+  @media(max-width:900px){
+    .feat-row{grid-template-columns:1fr;}
+    .feat-row.rev{direction:ltr;}
+    .nav-links{display:none;}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="index.html" class="logo"><span class="logo-dot"></span>super_vibe</a>
+      <ul class="nav-links">
+        <li><a href="features.html">Features</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="login.html" class="btn btn-ghost" style="padding:10px 18px;">Log in</a>
+        <a href="login.html?mode=signup" class="btn btn-primary" style="padding:10px 18px;">Start for free</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero wrap">
+  <h1>Every feature, in plain language</h1>
+  <p>No jargon — just what each part of super_vibe actually does for your team day to day.</p>
+</section>
+
+<section class="section-pad">
+  <div class="wrap">
+    <div class="feat-row">
+      <div>
+        <div class="feat-icon">◧</div>
+        <h2>Planning that adapts to your team</h2>
+        <p>Boards, sprints and briefs live together, and super_vibe adjusts suggested timelines as workload changes.</p>
+        <ul class="feat-list">
+          <li>Ready-made brief templates per project type</li>
+          <li>Drag-and-drop sprint calendar</li>
+          <li>Automatic workload balancing across the team</li>
+          <li>Custom fields for any kind of project</li>
+        </ul>
+      </div>
+      <div class="feat-media"><img src="https://images.unsplash.com/photo-1531973576160-7125cd663d86?auto=format&fit=crop&w=1000&q=80" alt="Team planning a sprint"></div>
+    </div>
+
+    <div class="feat-row rev">
+      <div>
+        <div class="feat-icon">◨</div>
+        <h2>Collaboration without extra tabs</h2>
+        <p>Comments, mentions and live edits happen directly on the work, so context never gets lost in a separate chat.</p>
+        <ul class="feat-list">
+          <li>Live cursors and shared editing</li>
+          <li>One-click mentions with notifications</li>
+          <li>Full version history on every file</li>
+          <li>Guest access for clients and freelancers</li>
+        </ul>
+      </div>
+      <div class="feat-media"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=80" alt="Team collaborating on a whiteboard"></div>
+    </div>
+
+    <div class="feat-row">
+      <div>
+        <div class="feat-icon">◩</div>
+        <h2>Analytics that flag problems early</h2>
+        <p>See who's overloaded, which projects are slipping, and where a deadline is at risk — before it becomes a fire drill.</p>
+        <ul class="feat-list">
+          <li>Real-time workload dashboard</li>
+          <li>Timeline forecasts based on sprint history</li>
+          <li>Custom reports, exportable as PDF</li>
+          <li>Client-ready progress summaries</li>
+        </ul>
+      </div>
+      <div class="feat-media"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80" alt="Analytics dashboard on a screen"></div>
+    </div>
+
+    <div class="feat-row rev">
+      <div>
+        <div class="feat-icon">◪</div>
+        <h2>Automation that stays out of your way</h2>
+        <p>Set a rule once, and reminders, handoffs and status changes take care of themselves.</p>
+        <ul class="feat-list">
+          <li>Ready-made automation recipes</li>
+          <li>Integrations with email, calendar and Slack</li>
+          <li>Conditional rules, no code required</li>
+          <li>Scheduled recurring tasks</li>
+        </ul>
+      </div>
+      <div class="feat-media"><img src="https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?auto=format&fit=crop&w=1000&q=80" alt="Automated workflow"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad">
+  <div class="wrap">
+    <h2 style="text-align:center;font-size:32px;margin-bottom:14px;">Try the board yourself</h2>
+    <p style="text-align:center;color:var(--muted);max-width:520px;margin:0 auto 40px;">Drag a card between columns — this is the same interaction your team would use every day.</p>
+    <div class="playground" id="playground">
+      <div class="pg-col" data-col="todo">
+        <div class="pg-col-head">To do <span>2</span></div>
+        <div class="pg-drop" data-col="todo">
+          <div class="pg-card" draggable="true">Draft homepage copy<span>Due Friday</span></div>
+          <div class="pg-card" draggable="true">Review client feedback<span>Due Monday</span></div>
+        </div>
+      </div>
+      <div class="pg-col" data-col="progress">
+        <div class="pg-col-head">In progress <span>1</span></div>
+        <div class="pg-drop" data-col="progress">
+          <div class="pg-card" draggable="true">Build pricing page<span>Assigned to you</span></div>
+        </div>
+      </div>
+      <div class="pg-col" data-col="done">
+        <div class="pg-col-head">Done <span>1</span></div>
+        <div class="pg-drop" data-col="done">
+          <div class="pg-card" draggable="true">Kickoff call notes<span>Completed</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad" style="background:var(--bg-alt);">
+  <div class="wrap">
+    <h2 style="text-align:center;font-size:32px;margin-bottom:14px;">How super_vibe compares</h2>
+    <p style="text-align:center;color:var(--muted);max-width:520px;margin:0 auto 46px;">A quick look at how we stack up against a typical generic project tool.</p>
+    <div class="compare-wrap">
+      <table class="compare">
+        <tr><th>Capability</th><th class="col-us">super_vibe</th><th>Generic tool A</th><th>Generic tool B</th></tr>
+        <tr><td>Live collaborative editing</td><td class="col-us"><span class="yes">✓</span></td><td><span class="no">—</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td>Automatic workload balancing</td><td class="col-us"><span class="yes">✓</span></td><td><span class="no">—</span></td><td><span class="no">—</span></td></tr>
+        <tr><td>Built-in timeline forecasting</td><td class="col-us"><span class="yes">✓</span></td><td><span class="no">—</span></td><td><span class="yes">✓</span></td></tr>
+        <tr><td>No-code automation rules</td><td class="col-us"><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="no">—</span></td></tr>
+        <tr><td>Client guest access</td><td class="col-us"><span class="yes">✓</span></td><td><span class="yes">✓</span></td><td><span class="no">—</span></td></tr>
+        <tr><td>Flat pricing per seat</td><td class="col-us"><span class="yes">✓</span></td><td><span class="no">—</span></td><td><span class="no">—</span></td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad">
+  <div class="wrap">
+    <div class="cta-banner">
+      <h2>See it on your own projects</h2>
+      <p>Start free and import your first board in under five minutes.</p>
+      <a href="login.html?mode=signup" class="btn btn-primary">Start for free</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a href="index.html" class="logo"><span class="logo-dot"></span>super_vibe</a>
+    <p>© 2026 super_vibe. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  let dragged = null;
+  document.querySelectorAll('.pg-card').forEach(card=>{
+    card.addEventListener('dragstart', ()=>{ dragged = card; card.classList.add('dragging'); });
+    card.addEventListener('dragend', ()=>{ card.classList.remove('dragging'); updateCounts(); });
+  });
+  document.querySelectorAll('.pg-drop').forEach(zone=>{
+    zone.addEventListener('dragover', (e)=>{ e.preventDefault(); zone.classList.add('drag-over'); });
+    zone.addEventListener('dragleave', ()=>zone.classList.remove('drag-over'));
+    zone.addEventListener('drop', (e)=>{
+      e.preventDefault();
+      zone.classList.remove('drag-over');
+      if(dragged) zone.appendChild(dragged);
+    });
+  });
+  function updateCounts(){
+    document.querySelectorAll('.pg-col').forEach(col=>{
+      const count = col.querySelectorAll('.pg-card').length;
+      col.querySelector('.pg-col-head span').textContent = count;
+    });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing — super_vibe</title>
+<meta name="description" content="Simple per-seat pricing for super_vibe — see exactly what your team will pay.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2315171C'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='34' font-weight='700' fill='%23fff' text-anchor='middle'%3Es%3C/text%3E%3Ccircle cx='47' cy='17' r='5' fill='%23FF7A45'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#FAFAF8;--bg-alt:#F1EFE8;--ink:#15171C;--ink-soft:#3A3D45;--muted:#6B6E76;--line:#E6E3DA;
+    --accent:#2E3FE0;--accent-deep:#1B27A8;--accent-soft:#EBEDFB;--warm:#FF7A45;--r-m:20px;--r-l:32px;--ease:cubic-bezier(.16,1,.3,1);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;letter-spacing:-0.01em;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 32px;}
+  .section-pad{padding:80px 0;}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:600;font-size:15px;transition:.3s var(--ease);}
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 10px 24px -8px rgba(46,63,224,.5);}
+  .btn-primary:hover{transform:translateY(-3px);}
+  .btn-ghost{border:1.5px solid var(--line);}
+  .btn-white{background:#fff;color:var(--ink);}
+  header{padding:22px 0;border-bottom:1px solid var(--line);}
+  nav{display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto;padding:0 32px;}
+  .logo{font-family:'Fraunces',serif;font-weight:700;font-size:21px;display:flex;align-items:center;gap:9px;}
+  .logo-dot{width:9px;height:9px;border-radius:50%;background:var(--warm);}
+  .nav-links{display:flex;gap:30px;list-style:none;}
+  .nav-links a{font-size:14.5px;font-weight:500;color:var(--ink-soft);}
+  .nav-cta{display:flex;gap:14px;}
+  .hero{padding:70px 0 20px;text-align:center;}
+  .hero h1{font-size:clamp(32px,5vw,48px);margin-bottom:14px;}
+  .hero p{color:var(--muted);font-size:17px;max-width:520px;margin:0 auto;}
+
+  .price-toggle{display:flex;align-items:center;justify-content:center;gap:14px;margin:44px 0 50px;}
+  .price-toggle span{font-size:14.5px;font-weight:600;color:var(--muted);}
+  .price-toggle span.active-label{color:var(--ink);}
+  .switch{width:52px;height:30px;background:var(--ink);border-radius:999px;position:relative;padding:3px;border:none;cursor:pointer;}
+  .switch .knob{width:24px;height:24px;background:#fff;border-radius:50%;transition:transform .4s var(--ease);}
+  .switch.year .knob{transform:translateX(22px);}
+  .save-badge{background:var(--accent-soft);color:var(--accent-deep);font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;}
+
+  .pdf-row{margin-top:26px;}
+  .pdf-btn{font-size:13.5px;padding:11px 20px;}
+
+  .currency-row{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:26px;flex-wrap:wrap;}
+  .currency-row>span:first-child{font-size:13.5px;font-weight:600;color:var(--muted);}
+  .currency-pills{display:flex;gap:6px;background:var(--bg-alt);border-radius:999px;padding:4px;}
+  .cur-pill{padding:8px 14px;border-radius:999px;font-size:12.5px;font-weight:700;color:var(--muted);transition:.25s var(--ease);border:none;background:none;cursor:pointer;}
+  .cur-pill.active{background:#fff;color:var(--ink);box-shadow:0 4px 10px -4px rgba(0,0,0,.15);}
+  .currency-note{font-size:11.5px;color:var(--muted);opacity:.75;}
+
+  .detail-compare-wrap{overflow-x:auto;}
+  table.detail-compare{width:100%;border-collapse:collapse;min-width:600px;background:#fff;border-radius:var(--r-l);overflow:hidden;box-shadow:0 20px 50px -30px rgba(20,20,30,.2);}
+  table.detail-compare th, table.detail-compare td{padding:15px 20px;text-align:left;border-bottom:1px solid var(--line);font-size:14px;}
+  table.detail-compare th{background:var(--bg-alt);font-family:'Fraunces',serif;font-size:15.5px;font-weight:600;}
+  table.detail-compare td:not(:first-child), table.detail-compare th:not(:first-child){text-align:center;}
+  table.detail-compare .col-team{background:var(--accent-soft);font-weight:600;}
+  table.detail-compare tr:last-child td{border-bottom:none;}
+  table.detail-compare .yes{color:#1E9E5A;font-weight:700;}
+  table.detail-compare .no{color:#C7C4B8;}
+
+  @media print{
+    header, .pdf-row, .price-toggle, .currency-row, #viewerCount, .no-print, footer{display:none !important;}
+    body{background:#fff;}
+    .price-card{break-inside:avoid;box-shadow:none;}
+    .price-card.pop{background:#fff;color:var(--ink);border:2px solid var(--ink);}
+    .price-card.pop *{color:var(--ink) !important;}
+  }
+
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-bottom:90px;}
+  .price-card{border:1.5px solid var(--line);border-radius:var(--r-l);padding:40px 32px;transition:.4s var(--ease);background:#fff;}
+  .price-card:hover{transform:translateY(-8px);box-shadow:0 30px 50px -24px rgba(20,20,30,.22);}
+  .price-card.pop{border-color:var(--ink);background:var(--ink);color:#fff;position:relative;transform:translateY(-14px);}
+  .pop-tag{position:absolute;top:-14px;left:32px;background:var(--warm);color:#fff;font-size:12px;font-weight:700;padding:5px 12px;border-radius:999px;}
+  .price-card h4{font-size:19px;margin-bottom:8px;}
+  .price-card.pop p.desc, .price-card.pop .plan-list li{color:#C9CAD4;}
+  .price-card p.desc{color:var(--muted);font-size:14.5px;margin-bottom:26px;min-height:40px;}
+  .price-num{display:flex;align-items:baseline;gap:6px;margin-bottom:26px;}
+  .price-num b{font-family:'Fraunces',serif;font-size:42px;font-weight:600;}
+  .price-num span{font-size:14px;color:var(--muted);}
+  .price-card.pop .price-num span{color:#9FA0AE;}
+  .plan-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:30px;}
+  .plan-list li{font-size:14.5px;color:var(--ink-soft);display:flex;gap:9px;}
+  .plan-list li::before{content:'—';color:var(--warm);}
+  .price-card .btn{width:100%;justify-content:center;}
+
+  .calc{background:var(--bg-alt);border-radius:var(--r-l);padding:50px;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;}
+  .calc h2{font-size:26px;margin-bottom:10px;}
+  .calc p{color:var(--muted);font-size:15px;margin-bottom:26px;}
+  .calc-row{margin-bottom:22px;}
+  .calc-row label{display:flex;justify-content:space-between;font-size:14px;font-weight:600;margin-bottom:10px;}
+  .calc-row input[type=range]{width:100%;accent-color:var(--accent);}
+  .plan-select{display:flex;gap:10px;}
+  .plan-select button{flex:1;padding:10px;border-radius:10px;border:1.5px solid var(--line);background:#fff;font-weight:600;font-size:13.5px;cursor:pointer;transition:.3s;}
+  .plan-select button.active{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-deep);}
+  .calc-result{background:#fff;border-radius:var(--r-m);padding:34px;text-align:center;}
+  .calc-result span{font-size:13px;color:var(--muted);}
+  .calc-result b{display:block;font-family:'Fraunces',serif;font-size:48px;margin:8px 0;}
+  .calc-result .per{font-size:13px;color:var(--muted);margin-bottom:22px;}
+
+  footer{background:var(--ink);color:#fff;padding:50px 0 26px;text-align:center;margin-top:20px;}
+  footer p{color:#8E90A0;font-size:13px;}
+  footer .logo{color:#fff;justify-content:center;margin-bottom:14px;}
+
+  @media(max-width:900px){.price-grid{grid-template-columns:1fr;}.calc{grid-template-columns:1fr;}.nav-links{display:none;}}
+</style>
+</head>
+<body>
+<header><nav>
+  <a href="index.html" class="logo"><span class="logo-dot"></span>super_vibe</a>
+  <ul class="nav-links"><li><a href="features.html">Features</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="blog.html">Blog</a></li><li><a href="about.html">About</a></li></ul>
+  <div class="nav-cta"><a href="login.html" class="btn btn-ghost" style="padding:10px 18px;">Log in</a><a href="login.html?mode=signup" class="btn btn-primary" style="padding:10px 18px;">Start for free</a></div>
+</nav></header>
+
+<section class="hero wrap">
+  <h1>Simple, per-seat pricing</h1>
+  <p>No hidden fees. Pay for the seats your team actually uses.</p>
+  <div class="pdf-row">
+    <button id="printBtn" class="btn btn-ghost pdf-btn">⬇ Download as PDF</button>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="price-toggle">
+    <span class="active-label" id="labelMonth">Monthly</span>
+    <button class="switch" id="priceSwitch"><div class="knob"></div></button>
+    <span id="labelYear">Yearly</span>
+    <span class="save-badge">Team & Studio only</span>
+  </div>
+
+  <div class="currency-row">
+    <span>Currency</span>
+    <div class="currency-pills">
+      <button class="cur-pill active" data-cur="USD">USD $</button>
+      <button class="cur-pill" data-cur="EUR">EUR €</button>
+      <button class="cur-pill" data-cur="RUB">RUB ₽</button>
+    </div>
+    <span class="currency-note">Approximate, for illustration only</span>
+  </div>
+
+  <p class="no-print" style="text-align:center;color:var(--muted);font-size:13.5px;margin-bottom:10px;">
+    <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#1E9E5A;margin-right:6px;"></span>
+    <span id="viewerCount">14</span> people are looking at these plans right now
+  </p>
+
+  <div class="price-grid">
+    <div class="price-card">
+      <h4>Starter</h4>
+      <p class="desc">For a small team just trying out a new rhythm.</p>
+      <div class="price-num"><b class="price-val" data-m="0" data-y="0">$0</b><span>/ forever</span></div>
+      <ul class="plan-list"><li>Up to 3 members</li><li>2 active projects</li><li>Basic brief templates</li><li>7-day version history</li></ul>
+      <a href="#" class="btn btn-ghost buy-btn" data-plan="Starter" data-price-m="0" data-price-y="0" data-period="forever">Start for free</a>
+    </div>
+    <div class="price-card pop">
+      <span class="pop-tag">Most popular</span>
+      <h4>Team</h4>
+      <p class="desc">For studios and teams that need speed and structure.</p>
+      <div class="price-num"><b class="price-val" data-m="14" data-y="55">$14</b><span>/ user / month</span></div>
+      <ul class="plan-list"><li>Unlimited members</li><li>Unlimited projects</li><li>Analytics and reports</li><li>Email and Slack integrations</li></ul>
+      <a href="#" class="btn btn-white buy-btn" data-plan="Team" data-price-m="14" data-price-y="55" data-period="month">Choose plan</a>
+    </div>
+    <div class="price-card">
+      <h4>Studio</h4>
+      <p class="desc">For agencies juggling multiple clients and contractors.</p>
+      <div class="price-num"><b class="price-val" data-m="29" data-y="115">$29</b><span>/ user / month</span></div>
+      <ul class="plan-list"><li>Everything in Team</li><li>Separate client workspaces</li><li>Advanced automation</li><li>Dedicated account manager</li></ul>
+      <a href="#" class="btn btn-ghost buy-btn" data-plan="Studio" data-price-m="29" data-price-y="115" data-period="month">Contact us</a>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad wrap no-print">
+  <div class="calc">
+    <div>
+      <h2>Estimate your cost</h2>
+      <p>Drag the slider to see roughly what your team would pay per month.</p>
+      <div class="calc-row">
+        <label><span>Team size</span><span id="seatLabel">10 people</span></label>
+        <input type="range" min="1" max="60" value="10" id="seatSlider">
+      </div>
+      <div class="calc-row">
+        <label>Plan</label>
+        <div class="plan-select">
+          <button class="active" data-price="14" id="calcTeam">Team — $14</button>
+          <button data-price="29" id="calcStudio">Studio — $29</button>
+        </div>
+      </div>
+    </div>
+    <div class="calc-result">
+      <span>Estimated monthly cost</span>
+      <b id="calcTotal">$140</b>
+      <div class="per" id="calcPer">10 seats × $14/mo</div>
+      <a href="login.html?mode=signup" class="btn btn-primary" style="width:100%;justify-content:center;">Start free trial</a>
+    </div>
+  </div>
+</section>
+
+<section class="section-pad wrap no-print">
+  <h2 style="text-align:center;font-size:30px;margin-bottom:14px;">Compare plans in detail</h2>
+  <p style="text-align:center;color:var(--muted);max-width:520px;margin:0 auto 40px;">Every feature, side by side, so you know exactly what you're getting.</p>
+  <div class="detail-compare-wrap">
+    <table class="detail-compare">
+      <tr><th>Feature</th><th>Starter</th><th class="col-team">Team</th><th>Studio</th></tr>
+      <tr><td>Team members</td><td>Up to 3</td><td class="col-team">Unlimited</td><td>Unlimited</td></tr>
+      <tr><td>Active projects</td><td>2</td><td class="col-team">Unlimited</td><td>Unlimited</td></tr>
+      <tr><td>Brief templates</td><td>Basic</td><td class="col-team">All templates</td><td>All templates + custom</td></tr>
+      <tr><td>Version history</td><td>7 days</td><td class="col-team">1 year</td><td>Unlimited</td></tr>
+      <tr><td>Workload dashboard</td><td class="no">—</td><td class="col-team"><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+      <tr><td>Timeline forecasting</td><td class="no">—</td><td class="col-team"><span class="yes">✓</span></td><td><span class="yes">✓</span></td></tr>
+      <tr><td>Automation rules</td><td class="no">—</td><td class="col-team">Up to 10</td><td>Unlimited</td></tr>
+      <tr><td>Integrations</td><td class="no">—</td><td class="col-team">Email, Slack</td><td>All integrations</td></tr>
+      <tr><td>Client guest access</td><td class="no">—</td><td class="col-team">5 guests</td><td>Unlimited</td></tr>
+      <tr><td>Separate client workspaces</td><td class="no">—</td><td class="col-team no">—</td><td><span class="yes">✓</span></td></tr>
+      <tr><td>Dedicated account manager</td><td class="no">—</td><td class="col-team no">—</td><td><span class="yes">✓</span></td></tr>
+      <tr><td>Support</td><td>Community</td><td class="col-team">Email, &lt;24h</td><td>Priority, &lt;4h</td></tr>
+    </table>
+  </div>
+</section>
+
+<footer><div class="wrap"><a href="index.html" class="logo"><span class="logo-dot"></span>super_vibe</a><p>© 2026 super_vibe. All rights reserved.</p></div></footer>
+
+<script>
+  const priceSwitch = document.getElementById('priceSwitch');
+  const labelMonth = document.getElementById('labelMonth');
+  const labelYear = document.getElementById('labelYear');
+  const priceVals = document.querySelectorAll('.price-val');
+  let isYear = false;
+
+  // currency conversion (approximate fixed rates, for illustration only)
+  const currencies = {
+    USD:{symbol:'$', rate:1},
+    EUR:{symbol:'€', rate:0.92},
+    RUB:{symbol:'₽', rate:92}
+  };
+  let currentCur = 'USD';
+
+  function renderPrices(){
+    priceVals.forEach(v=>{
+      const usd = parseFloat(isYear ? v.dataset.y : v.dataset.m);
+      const cur = currencies[currentCur];
+      const converted = Math.round(usd * cur.rate);
+      v.textContent = cur.symbol + converted.toLocaleString('en-US');
+    });
+  }
+  renderPrices();
+
+  priceSwitch.addEventListener('click', ()=>{
+    isYear = !isYear;
+    priceSwitch.classList.toggle('year', isYear);
+    labelMonth.classList.toggle('active-label', !isYear);
+    labelYear.classList.toggle('active-label', isYear);
+    renderPrices();
+  });
+
+  document.querySelectorAll('.cur-pill').forEach(pill=>{
+    pill.addEventListener('click', ()=>{
+      document.querySelectorAll('.cur-pill').forEach(p=>p.classList.remove('active'));
+      pill.classList.add('active');
+      currentCur = pill.dataset.cur;
+      renderPrices();
+    });
+  });
+
+  document.querySelectorAll('.buy-btn').forEach(btn=>{
+    btn.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const period = btn.dataset.period === 'forever' ? 'forever' : (isYear ? 'year' : 'month');
+      const usd = btn.dataset.period === 'forever' ? 0 : (isYear ? btn.dataset.priceY : btn.dataset.priceM);
+      const cur = currencies[currentCur];
+      const price = Math.round(usd * cur.rate);
+      window.location.href = `checkout.html?plan=${encodeURIComponent(btn.dataset.plan)}&price=${price}&period=${period}&cur=${currentCur}&sym=${encodeURIComponent(cur.symbol)}`;
+    });
+  });
+
+  document.getElementById('printBtn').addEventListener('click', ()=>window.print());
+
+  // calculator
+  const seatSlider = document.getElementById('seatSlider');
+  const seatLabel = document.getElementById('seatLabel');
+  const calcTeam = document.getElementById('calcTeam');
+  const calcStudio = document.getElementById('calcStudio');
+  const calcTotal = document.getElementById('calcTotal');
+  const calcPer = document.getElementById('calcPer');
+  let calcPrice = 14;
+  function updateCalc(){
+    const seats = parseInt(seatSlider.value, 10);
+    seatLabel.textContent = seats + (seats===1 ? ' person' : ' people');
+    const total = seats * calcPrice;
+    calcTotal.textContent = '$' + total.toLocaleString('en-US');
+    calcPer.textContent = `${seats} seats × $${calcPrice}/mo`;
+  }
+  seatSlider.addEventListener('input', updateCalc);
+  calcTeam.addEventListener('click', ()=>{ calcPrice=14; calcTeam.classList.add('active'); calcStudio.classList.remove('active'); updateCalc(); });
+  calcStudio.addEventListener('click', ()=>{ calcPrice=29; calcStudio.classList.add('active'); calcTeam.classList.remove('active'); updateCalc(); });
+  updateCalc();
+
+  // live viewer counter (cosmetic social proof, fluctuates gently)
+  const viewerCount = document.getElementById('viewerCount');
+  let viewers = 14;
+  setInterval(()=>{
+    viewers += Math.floor(Math.random()*5) - 2;
+    viewers = Math.max(6, Math.min(29, viewers));
+    viewerCount.textContent = viewers;
+  }, 3500);
+</script>
+</body>
+</html>

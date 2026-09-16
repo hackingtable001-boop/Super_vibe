@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case study: Studio Flux — super_vibe</title>
+<meta name="description" content="How Studio Flux cut meeting time by 40% and stopped losing briefs after switching to super_vibe.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2315171C'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='34' font-weight='700' fill='%23fff' text-anchor='middle'%3Es%3C/text%3E%3Ccircle cx='47' cy='17' r='5' fill='%23FF7A45'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#FAFAF8;--bg-alt:#F1EFE8;--ink:#15171C;--ink-soft:#3A3D45;--muted:#6B6E76;--line:#E6E3DA;
+    --accent:#2E3FE0;--accent-soft:#EBEDFB;--warm:#FF7A45;--r-m:20px;--r-l:32px;--ease:cubic-bezier(.16,1,.3,1);}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--bg);line-height:1.7;}
+  a{color:inherit;text-decoration:none;}
+  h1,h2{font-family:'Fraunces',serif;font-weight:600;letter-spacing:-0.01em;}
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px;}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:600;font-size:15px;}
+  .btn-primary{background:var(--accent);color:#fff;}
+  header{padding:22px 0;border-bottom:1px solid var(--line);}
+  nav{display:flex;justify-content:space-between;max-width:1100px;margin:0 auto;padding:0 32px;align-items:center;}
+  .logo{font-family:'Fraunces',serif;font-weight:700;font-size:20px;display:flex;align-items:center;gap:9px;}
+  .logo-dot{width:9px;height:9px;border-radius:50%;background:var(--warm);}
+  .back{font-size:14px;color:var(--muted);}
+  .post-head{padding:60px 0 30px;}
+  .tag{display:inline-block;background:var(--accent-soft);color:#1B27A8;padding:5px 12px;border-radius:999px;font-size:12px;font-weight:600;margin-bottom:20px;}
+  .post-head h1{font-size:clamp(28px,5vw,42px);line-height:1.15;margin-bottom:16px;}
+  .post-head p.sub{color:var(--muted);font-size:17px;}
+  .cover{margin:36px 0 46px;}
+  .cover img{width:100%;height:380px;object-fit:cover;border-radius:var(--r-l);}
+  .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:40px 0;}
+  .stat-box{background:var(--bg-alt);border-radius:var(--r-m);padding:22px;text-align:center;}
+  .stat-box b{display:block;font-family:'Fraunces',serif;font-size:30px;color:var(--accent);}
+  .stat-box span{font-size:12.5px;color:var(--muted);}
+  article p{color:var(--ink-soft);font-size:16.5px;margin-bottom:20px;}
+  article h2{font-size:22px;margin:36px 0 14px;}
+  .pull-quote{font-family:'Fraunces',serif;font-style:italic;font-size:22px;line-height:1.5;border-left:3px solid var(--warm);padding-left:22px;margin:32px 0;}
+  .post-cta{background:var(--bg-alt);border-radius:var(--r-l);padding:40px;text-align:center;margin:60px 0;}
+  .post-cta h3{font-size:21px;margin-bottom:10px;}
+  .post-cta p{color:var(--muted);margin-bottom:20px;}
+  footer{background:var(--ink);color:#fff;padding:44px 0 60px;text-align:center;}
+  footer p{color:#8E90A0;font-size:13px;}
+  @media(max-width:600px){.cover img{height:220px;}.stats-row{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<header><nav>
+  <a href="index.html" class="logo"><span class="logo-dot"></span>super_vibe</a>
+  <a href="blog.html" class="back">← Back to blog</a>
+</nav></header>
+
+<div class="wrap">
+  <div class="post-head">
+    <span class="tag">Case study</span>
+    <h1>How Studio Flux cut meeting time by 40%</h1>
+    <p class="sub">A 14-person design studio replaced five tools with one shared board — and got its Fridays back.</p>
+  </div>
+  <div class="cover"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80" alt="Studio Flux team working"></div>
+
+  <div class="stats-row">
+    <div class="stat-box"><b>−40%</b><span>Time in status meetings</span></div>
+    <div class="stat-box"><b>3 weeks</b><span>Full team onboarding</span></div>
+    <div class="stat-box"><b>5 → 1</b><span>Tools replaced with one board</span></div>
+  </div>
+
+  <article>
+    <h2>The problem</h2>
+    <p>Studio Flux ran client work across a task tracker, a shared drive, email threads and a separate spreadsheet just to report status. Creative director Marina Boyko estimates the team spent close to a day a week just keeping those tools in sync.</p>
+
+    <p class="pull-quote">"We weren't slow because the work was hard. We were slow because everything lived in a different place."</p>
+
+    <h2>What changed</h2>
+    <p>The studio moved all active projects onto super_vibe over a single two-week sprint. Briefs, comments and deadlines moved onto shared boards, and the team's daily status call was replaced by an async check-in built into the board itself.</p>
+
+    <h2>The result</h2>
+    <p>Within a month, the studio had cut its weekly meeting load nearly in half and reported that client feedback turned around noticeably faster, since comments landed directly on the relevant file instead of getting summarized secondhand in a status email.</p>
+  </article>
+
+  <div class="post-cta">
+    <h3>Want results like this for your team?</h3>
+    <p>Start free and set up your first board in a few minutes.</p>
+    <a href="login.html?mode=signup" class="btn btn-primary">Start for free</a>
+  </div>
+</div>
+
+<footer><p>© 2026 super_vibe. All rights reserved.</p></footer>
+</body>
+</html>
